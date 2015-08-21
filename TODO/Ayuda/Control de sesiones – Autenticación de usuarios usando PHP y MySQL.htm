@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://www.uees.edu.sv/blogs/oscard/?p=110 -->
+<html dir="ltr" lang="es-ES"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Control de sesiones – Autenticación de usuarios usando PHP y MySQL</title>
+
+<link rel="stylesheet" href="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/style.css" type="text/css" media="all">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://www.uees.edu.sv/blogs/oscard/xmlrpc.php">
+
+<meta name="generator" content="WordPress 3.4.2">
+<meta name="template" content="News 0.3">
+<meta name="robots" content="index,follow">
+<meta name="author" content="Ing. Oscar Díaz">
+<meta name="copyright" content="Copyright (c) diciembre 2012">
+<meta name="revised" content="Sábado, diciembre 15th, 2012, 9:25 am">
+<meta name="description" content="Forma de cómo crear una forma de autenticación usando php y mysql sencilla y fácil de entender.">
+<meta name="keywords" content="php,mysql,autenticacion,inicio,sesion,control,programacion">
+<link rel="alternate" type="application/rss+xml" title="Blog del Ing. Oscar Díaz » Feed" href="http://www.uees.edu.sv/blogs/oscard/?feed=rss2">
+<link rel="alternate" type="application/rss+xml" title="Blog del Ing. Oscar Díaz » RSS de los comentarios" href="http://www.uees.edu.sv/blogs/oscard/?feed=comments-rss2">
+<link rel="alternate" type="application/rss+xml" title="Blog del Ing. Oscar Díaz » Control de sesiones – Autenticación de usuarios usando PHP y MySQL RSS de los comentarios" href="http://www.uees.edu.sv/blogs/oscard/?feed=rss2&p=110">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/wp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="lightboxStyle-css" href="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/colorbox.css" type="text/css" media="screen">
+<script id="www-widgetapi-script" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/www-widgetapi-vfl9twtxR.js" async=""></script><script type="text/javascript" async="" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/mo.js"></script><script type="text/javascript" async="" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/mo.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/jquery.js"></script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/ytprefs.min.js"></script><script src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/iframe_api" type="text/javascript"></script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/comment-reply.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.uees.edu.sv/blogs/oscard/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.uees.edu.sv/blogs/oscard/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Instalar Apache, PHP, MySQL y PHPMyAdmin en Ubuntu – LAMP" href="http://www.uees.edu.sv/blogs/oscard/?p=102">
+<link rel="next" title="Inventario de hardware y software mediante software opensorce – OCS Inventory NG" href="http://www.uees.edu.sv/blogs/oscard/?p=122">
+<link rel="canonical" href="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Control de sesiones – Autenticación de usuarios usando PHP y MySQL.htm">
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/client"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/sg.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/sf_main.jsp"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/javascript.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/hotels.php"></script><script type="text/javascript" id="jw_00" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/affiliate_client.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/sf_preloader.jsp"></script><script src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/opt_content.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/client"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/sg.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/sf_main.jsp"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/javascript.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/hotels.php"></script><script src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/opt_content.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/sf_code.jsp"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/sf_code.jsp"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/base_single_icon.js"></script><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/base_single_icon.js"></script><link rel="stylesheet" href="http://www.superfish.com/ws/css/main.css?v=13.1.1.87"><link rel="stylesheet" href="http://www.superfish.com/ws/css/main.css?v=13.1.1.87"><script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/get.jsp"></script><script src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/ngram_id_dict.json" id="SF_ngram_call" type="text/javascript"></script><script id="i9049" type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/uhsd2.php"></script><script id="iowxz379" type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/ajslg.php"></script></head>
+
+<body class="wordpress ltr es_ES parent-theme y2014 m04 d01 h08 tuesday logged-out singular singular-post singular-post-110"><script type="text/javascript">ANCHORFREE_VERSION="623161526"</script><script type="text/javascript">var _AF2$ = {'SN':'HSSHIELD00VE','IP':'85.237.197.142','CH':'HSSCNL000550','CT':'z225','HST':'&sessStartTime=1396357575&in=1396362101_55637085|d,146987265|w,55637085|m,4244931327|t&out=1396362101_10057258|d,25581995|w,10057258|m,616063023|t&NUM_VID=0&NUM_VID_TS=1396357601&SFLAG=1&accessLP=1&fvidat=0&bChrome=33&pv=2&clsBtnCnt=1&fav=1','AFH':'hss133','RN':Math.floor(Math.random()*999),'TOP':(parent.location!=document.location||top.location!=document.location)?0:1,'AFVER':'3.32','fbw':false,'FBWCNT':0,'FBWCNTNAME':'FBWCNT_CHROME','NOFBWNAME':'NO_FBW_CHROME','B':'c','VER': 'nonus'};if(_AF2$.TOP==1){document.write("<scr"+"ipt src='http://box.anchorfree.net/insert/insert.php?sn="+_AF2$.SN+"&ch="+_AF2$.CH+"&v="+ANCHORFREE_VERSION+6+"&b="+_AF2$.B+"&ver="+_AF2$.VER+"&afver="+_AF2$.AFVER+"' type='text/javascript'></scr"+"ipt>");}</script><script src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/insert.php" type="text/javascript"></script><style type="text/css" title="AFc_css379">.AFc_body379{}.AFc_all379,a.AFc_all379:hover,a.AFc_all379:visited{outline:none;background:transparent;border:none;margin:0;padding:0;top:0;left:0;text-decoration:none;overflow:hidden;display:block;z-index:666999;}</style><style type="text/css">.AFhss_dpnone{display:none;width:0;height:0}</style><img src="about:blank" id="AFhss_trk0" name="AFhss_trk0" style="display:none"><img src="about:blank" id="AFhss_trk" name="AFhss_trk" style="display:none"><style>#HSE_top_fixed2295{width:100% !important;background:#fff !important;position:fixed !important;z-index:999999999 !important;display:block;height:90px;left:0px;border-bottom:3px solid #333;}#HSE_banner_fixed106{background:transparent !important;position:fixed !important;z-index:999999999 !important;display:block;height:90px;left:0px;overflow:hidden !important;}#HSE_top_static6829{width:100% !important;position:static !important;display:block;height:90px;left:0px;}</style><div id="HSE_top_fixed2295" style="display: none;"></div><div id="HSE_banner_fixed106" style="display: none;"><img style="float:left;display:block;position:absolute;border:0;top:0;left:0;z-index:100;height:90px;width:167px;cursor:pointer;" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/hss_logo.jpg" title="This ad is brought to
+you by Hotspot Shield.
+For more info,visit us." onclick="window.location=&#39;http://hotspotshield.com/connected/&#39;;"><div style="position:absolute;width:928px;top:0px;left:307.5px;height:100px;"><span id="AFHSSADD" style="float:left;height:0;width:0"></span><iframe class="AFc_all379" name="AFif_uno379" id="AFif_uno379" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/saved_resource(1).htm" height="NaNpx" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0" scrolling="no" width="100%" allowtransparency="true" style="display: block;"></iframe><iframe class="AFc_all379" name="AFif_duo379" id="AFif_duo379" src="about:blank" height="NaNpx" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0" scrolling="no" width="100%" allowtransparency="true" style="display: none;"></iframe><iframe class="AFc_all379" name="widget379" id="widget379" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/saved_resource.htm" height="90px" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0" scrolling="no" width="168px" allowtransparency="true" style="position:absolute;top:0px;left:738px;width:168px;height:90px;"></iframe><iframe class="AFc_all379" name="widget379_ncat" id="widget379_ncat" src="about:blank" height="90px" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0" scrolling="no" width="168px" allowtransparency="true" style="position:absolute;top:0px;left:738px;width:168px;height:90px;display:none;"></iframe><img class="AFc_all" onclick="_B$.remove();return false;" id="AFi_ClA379" style="height:12px;font-family:verdana,arial,tahoma;width:12px;line-height:0.7;font-weight:bolder;background-color:#fff;position:absolute;cursor:hand;cursor:pointer;margin:0;border:0;padding:0;position:absolute;top:1px;right:0px;" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/x_ask.gif" title="To keep Hotspot Shield free we display ads. Click [X] anytime to stop the display of ads."><div style="position:absolute;bottom:0px;left:0px;bottom:0px;color:#000;font-size:10px;">Advertisement</div></div></div><div id="HSE_top_static6829" style="display: none;"></div><img id="AFhss_trkn9" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/lg.php" style="display: none;"><style type="text/css"> #HSE_top_fixed2295{height:100px !important;top:0px !important;background:rgb(217, 217, 217) !important;} #HSE_banner_fixed106{height:100px !important;top:0px !important;width:100% !important;background:#fff !important;} #HSE_top_static6829{height:100px !important;background:rgb(217, 217, 217) !important;}</style>
+
+	
+	<div id="body-container">
+
+		
+	<div id="menu-secondary" class="menu-container">
+
+		<div class="wrap">
+
+			<div id="site-description"><span>blog de tecnología, redes, programación, sistemas y otros XD</span></div>
+			<div class="menu"><ul id="menu-secondary-items" class="sf-js-enabled"><li id="menu-item-30" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-30"><a href="http://www.uees.edu.sv/blogs/oscard">Inicio</a></li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="http://www.uees.edu.sv/blogs/oscard/?page_id=26">Presentación</a></li>
+<li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="http://www.uees.edu.sv/blogs/oscard/?page_id=16">Contacto</a></li>
+<li class="loginout"><a href="http://www.uees.edu.sv/blogs/oscard/wp-login.php?redirect_to=http%3A%2F%2Fwww.uees.edu.sv%2Fblogs%2Foscard%2Fblogs%2Foscard%2F%3Fp%3D110">Acceder</a></li></ul></div>
+			
+		</div>
+
+	</div><!-- #menu-secondary .menu-container -->
+
+
+		
+		<div id="header">
+
+			
+			<div class="wrap">
+
+				<a href="http://www.uees.edu.sv/blogs/oscard"><img src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/logo.png"></a>				
+				
+				
+			</div><!-- .wrap -->
+
+			
+		</div><!-- #header -->
+
+		
+		
+	<div id="menu-primary" class="menu-container">
+
+		<div class="wrap">
+
+			
+			<div class="menu"><ul id="menu-primary-items" class="sf-js-enabled"><li id="menu-item-8" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=4">Software libre</a></li>
+<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=5">Software privativo</a></li>
+<li id="menu-item-51" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-51"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=9">Programación</a></li>
+<li id="menu-item-592" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-592"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=84">Redes</a></li>
+<li id="menu-item-85" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-85"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=10">Educación</a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=6">Otros</a></li>
+</ul></div>
+			
+		</div>
+
+	</div><!-- #menu-primary .menu-container -->
+
+
+		
+		<div id="container">
+
+			<div class="wrap">
+
+			
+			<div class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb"><span class="trail-before">Explorar: <span class="sep">/</span></span> <span class="trail-begin"><a href="http://www.uees.edu.sv/blogs/oscard" title="Blog del Ing. Oscar Díaz" rel="home" class="trail-begin">Inicio</a></span> <span class="sep">/</span> <span class="trail-end">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</span></div>
+	
+	<div id="content">
+
+		
+		<div class="hfeed">
+
+			
+				
+					
+					<div id="post-110" class="hentry post publish post-1 odd author-oscard category-programacion post_tag-autenticacion post_tag-control post_tag-inicio post_tag-mysql post_tag-php post_tag-programacion-2 post_tag-sesion">
+
+						
+						<div class="entry-utility"><a class="print-link hide-if-no-js" href="http://www.uees.edu.sv/blogs/oscard/?p=110#" style="display: inline;">Imprimir</a> <a class="email-link" href="mailto:?subject=%5BBlog+del+Ing.+Oscar+D%C3%ADaz%5DControl+de+sesiones+%26%238211%3B+Autenticaci%C3%B3n+de+usuarios+usando+PHP+y+MySQL&body=Check+out+this+post%3A+http%3A%2F%2Fwww.uees.edu.sv%2Fblogs%2Foscard%2F%3Fp%3D110">Correo-e</a> </div>
+						<h1 class="entry-title"><a href="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Control de sesiones – Autenticación de usuarios usando PHP y MySQL.htm" title="Control de sesiones – Autenticación de usuarios usando PHP y MySQL" rel="bookmark">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</a></h1>
+						<div class="byline">Por <span class="author vcard"><a class="url fn n" href="http://www.uees.edu.sv/blogs/oscard/?author=1" title="Ing. Oscar Díaz">Ing. Oscar Díaz</a></span> en <abbr class="published" title="Sábado, diciembre 15th, 2012, 9:25 am">15 diciembre, 2012</abbr> <span class="category"><span class="before"> in </span><a href="http://www.uees.edu.sv/blogs/oscard/?cat=9" rel="tag">Programación</a></span> </div>
+						<div class="entry-content">
+							<p>Quiero compartir una forma práctica y sencilla para poder crear un inicio de sesión, controlar las sesiones o, quizás más práctico decir, Crear una autenticación de usuarios, utilizando la tecnología LAMP (Linux, Apache, MySQL y PHP) en un sitio web dinámico mediante PHP. Para la instalación de LAMP en Ubuntu, <a href="http://www.uees.edu.sv/blogs/oscard/?p=102">remitirse a éste post…</a></p>
+<p>Bien, como sabrán los archivos php que veremos a continuación se deberán de copiar en la carpeta donde Apache permite las publicaciones de las páginas web. Para el caso de haber hecho la instalación en Ubuntu, generalmente la dirección es: /var/www</p>
+<p>Si utiliza tecnología como XAMPP en Windows, los archivos se deberían de copiar en c:\xampp\htdocs.</p>
+<p>Lo primero es, crear nuestro archivo <span style="color: #ff0000;"><strong>index.php</strong></span>, el cual será el primer archivo que se invoque para nuestro inicio de sesión. Prácticamente es puro HTML por lo que no se explicará mucho al respecto. Se dejó lo más sencillo posible para efectos didácticos.</p>
+<blockquote><p>&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;Inicio de sesión&lt;/title&gt;<br>
+&lt;meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;form action=”control.php” method=”post” id=”form”&gt;&lt;br&gt;<br>
+Usuario: &lt;input type=”text” name=”usuario” id=”usuario” /&gt;&lt;br&gt;<br>
+Clave: &lt;input type=”password” name=”clave” id=”clave” /&gt;&lt;br&gt;<br>
+&lt;input type=”submit” value=”Entrar”&gt;<br>
+&lt;/form&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</p></blockquote>
+<p>&nbsp;</p>
+<p>Como se ve en el archivo index.php, el &lt;form&gt; direcciona al archivo control.php el cuál sería el archivo encargado de realizar la validación del usuario y contraseña ingresado. A continuación, se muestra el archivo <strong><span style="color: #ff0000;">control.php</span></strong></p>
+<blockquote><p>&lt;?<br>
+/* A continuación, realizamos la conexión con nuestra base de datos en MySQL */<br>
+$link = mysql_connect(“localhost”,”root”,”123456″);<br>
+mysql_select_db(“base_datos”, $link);</p>
+<p>/* El query valida si el usuario ingresado existe en la base de datos. Se utiliza la función<br>
+htmlentities para evitar inyecciones SQL. */<br>
+$myusuario = mysql_query(“select idusuario from usuarios<br>
+where idusuario = ‘”.htmlentities($_POST["usuario"]).”‘”,$link);<br>
+$nmyusuario = mysql_num_rows($myusuario);</p>
+<p>//Si existe el usuario, validamos también la contraseña ingresada y el estado del usuario…<br>
+if($nmyusuario != 0){<br>
+$sql = “select idusuario<br>
+from usuarios<br>
+where estado = 1<br>
+and idusuario = ‘”.htmlentities($_POST["usuario"]).”‘<br>
+and clave = ‘”.md5(htmlentities($_POST["clave"])).”‘”;<br>
+$myclave = mysql_query($sql,$link);<br>
+$nmyclave = mysql_num_rows($myclave);</p>
+<p>//Si el usuario y clave ingresado son correctos (y el usuario está activo en la BD), creamos la sesión del mismo.<br>
+if($nmyclave != 0){<br>
+session_start();<br>
+//Guardamos dos variables de sesión que nos auxiliará para saber si se está o no “logueado” un usuario<br>
+$_SESSION["autentica"] = “SIP”;<br>
+$_SESSION["usuarioactual"] = mysql_result($myclave,0,0); //nombre del usuario logueado.<br>
+//Direccionamos a nuestra página principal del sistema.<br>
+header (“Location: app.php”);<br>
+}<br>
+else{<br>
+echo”&lt;script&gt;alert(‘La contrase\u00f1a del usuario no es correcta.’);<br>
+window.location.href=\”index.php\”&lt;/script&gt;”;<br>
+}<br>
+}else{<br>
+echo”&lt;script&gt;alert(‘El usuario no existe.’);window.location.href=\”index.php\”&lt;/script&gt;”;<br>
+}<br>
+mysql_close($link);<br>
+?&gt;</p></blockquote>
+<p>Como podemos apreciar del código (muy sencillo por cierto) hacemos una validación de la información ingresada por el usuario (usuario y contraseña) contra la información que están en la base de datos, para así finalmente, si todo esta bien, se direcciona a la aplicación principal; sino, muestra un mensaje de alerta indicando el problema. Ahora, no hemos hablado de la base de datos, por lo que a continuación realizaremos la creación de la misma y crearemos la tabla de usuarios (sencilla).</p>
+<p>Lo primero, es entrar a PHPMyAdmin así: http://localhost/phpmyadmin</p>
+<p>Nos autenticamos con nuestro usuario y contraseña y, una vez adentro, se da clic en “Base de Datos” para luego agregar el nombre de nuestra base de datos y damos clic en Crear.</p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/022.png" data-lightboxplus="lightbox[110]" title="autentica01" class="cboxElement"><img class="aligncenter size-medium wp-image-111" title="autentica01" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/022-300x97.png" alt="autentica01" width="300" height="97"></a></p>
+<p>En la parte izquierda ahora nos aparecerá la base de datos que creamos, por lo que damos clic en ella y en la parte derecha nos preguntará si queremos crear una tabla. Colocamos el nombre de la tabla, colocamos el # de columnas (para el ejemplo, con 3 campos nos basta: Usuario, Clave y Estado) y damos clic en “Continuar”</p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/033.png" data-lightboxplus="lightbox[110]" title="autentica02" class="cboxElement"><img class="aligncenter size-medium wp-image-112" title="autentica02" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/033-300x150.png" alt="autentica02" width="300" height="150"></a></p>
+<p>Ahora, colocamos el nombre de nuestros campos, el tipo de datos, la longitud y, en el caso del campo idusuario, le diremos que será llave primaria. Ver la siguiente imagen para mayor referencia.</p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/042.png" data-lightboxplus="lightbox[110]" title="autentica03" class="cboxElement"><img class="aligncenter size-medium wp-image-113" title="autentica03" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/042-300x185.png" alt="autentica03" width="300" height="185"></a></p>
+<p>Ahora, bajamos mediante la barra vertical de la ventanita y damos clic en “Guardar” para crear nuestra tabla.</p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/052.png" data-lightboxplus="lightbox[110]" title="autentica05" class="cboxElement"><img class="aligncenter size-medium wp-image-114" title="autentica05" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/052-300x106.png" alt="autentica05" width="300" height="106"></a></p>
+<p>&nbsp;</p>
+<p>Ahora, damos clic al botón “Insertar” para poder insertar un registro de prueba, y colocamos los nuevos valores (ver la imagen para mayor referencia) y finalmente damos clic en “Continuar”.</p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/071.png" data-lightboxplus="lightbox[110]" title="autentica06" class="cboxElement"><img class="aligncenter size-medium wp-image-116" title="autentica06" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/071-300x127.png" alt="autentica06" width="300" height="127"></a></p>
+<p>&nbsp;</p>
+<p>Continuando con la programación en PHP… Ahora, crearemos el archivo <strong><span style="color: #ff0000;">app.php</span></strong> qué, según se vió en el archivo anterior, es donde se direcciona cuando el usuario ha ingresado correctamente el usuario y contraseña.</p>
+<blockquote><p>&lt;? include(“seguridad.php”); ?&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;App&lt;/title&gt;<br>
+&lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;h1&gt;Bienvenido al sistema!&lt;/h1&gt;<br>
+&lt;h2&gt;Usuario: &lt;? echo $_SESSION["usuarioactual"] ?&gt; &lt;/h2&gt;&lt;br&gt;<br>
+&lt;p&gt;Entro correctamente al sistema.&lt;/p&gt;&lt;br&gt;&lt;br&gt;<br>
+&lt;a href=”salir.php”&gt;Salir&lt;/a&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</p></blockquote>
+<p>Pongamos atención a la primera línea… Estamos incluyendo a la página un archivo php específico el cuál éste validará si existe una sesión válida para poder mostrar la página. Si el archivo seguridad.php determina que existe una sesión válida, se termina de mostrar la página. Véase también la línea en donde está el código:&nbsp;<span style="color: #3366ff;">echo $_SESSION["usuarioactual"] <span style="color: #000000;"> ; Con ésto estamos mostrando el nombre del usuario que se autenticó. Dejamos un vínculo al archivo salir.php el cual es el encargado de terminar la sesión activa del usuario.</span></span></p>
+<p>Veamos el contenido del archivo <span style="color: #ff0000;"><strong>seguridad.php</strong></span></p>
+<blockquote><p>&lt;?<br>
+//Reanudamos la sesión<br>
+@session_start();</p>
+<p>//Validamos si existe realmente una sesión activa o no<br>
+if($_SESSION["autentica"] != “SIP”){<br>
+//Si no hay sesión activa, lo direccionamos al index.php (inicio de sesión)<br>
+header(“Location: index.php”);<br>
+exit();<br>
+}<br>
+?&gt;</p></blockquote>
+<p>Aqui vemos la parte de seguridad de éste sistema… Si alguien mal intencionado quisiera entrar, sin pasar por el inicio de sesión, a app.php, como existe una validación mediante el archivo seguridad.php, automáticamente se le redireccionará al inicio de sesión. Mientras no haya un inicio de sesión correcto, no se puede mostrar el archivo app.php, por lo que todas las páginas que creamos del sistema deberán de tener el include(“seguridad.php”) para que así valide si realmente el usuario está autenticado.</p>
+<p>Finalmente, veamos el archivo <strong><span style="color: #ff0000;">salir.php</span></strong></p>
+<blockquote><p>&lt;?<br>
+//Reanudamos la sesión<br>
+session_start();<br>
+//Literalmente la destruirmos<br>
+session_destroy();<br>
+//Redireccionamos a index.php (al inicio de sesión)<br>
+header(“Location: index.php”);<br>
+?&gt;</p></blockquote>
+<p>Y así cerramos la sesión. Si bien es cierto no es la mejor forma de autenticación que existe en el mundo PHP, es la más sencilla a mi criterio y pues se sigue implementando.</p>
+<p>A continuación, las capturas de pantalla de ésta mini aplicación web:</p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/a01.png" data-lightboxplus="lightbox[110]" title="autentica07" class="cboxElement"><img class="aligncenter size-medium wp-image-117" title="autentica07" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/a01-300x149.png" alt="autentica07" width="300" height="149"></a></p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/a02.png" data-lightboxplus="lightbox[110]" title="autentica08" class="cboxElement"><img class="aligncenter size-medium wp-image-118" title="autentica08" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/a02-300x209.png" alt="autentica08" width="300" height="209"></a></p>
+<p>&nbsp;</p>
+<p>Puede descargar los archivos de ejemplo&nbsp;<a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/auth1.zip">AQUIII</a>.</p>
+													</div><!-- .entry-content -->
+
+						<div class="entry-meta"><span class="share">Compartir en:</span> <a href="http://www.mixx.com/" onclick="window.location=&#39;http://www.mixx.com/submit?page_url=&#39;+window.location; return false;">Mixx</a> <a href="http://delicious.com/save" onclick="window.open(&#39;http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url=&#39;+encodeURIComponent(&#39;http://www.uees.edu.sv/blogs/oscard/?p=110&#39;)+&#39;&amp;title=&#39;+encodeURIComponent(&#39;Control de sesiones – Autenticación de usuarios usando PHP y MySQL&#39;),&#39;delicious&#39;, &#39;toolbar=no,width=550,height=550&#39;); return false;">Delicious</a> <a href="http://digg.com/submit?phase=2&url=http%3A%2F%2Fwww.uees.edu.sv%2Fblogs%2Foscard%2F%3Fp%3D110&title=Control+de+sesiones+%26%238211%3B+Autenticaci%C3%B3n+de+usuarios+usando+PHP+y+MySQL" title="Digg this entry">Digg</a> <a href="http://facebook.com/sharer.php?u=http%3A%2F%2Fwww.uees.edu.sv%2Fblogs%2Foscard%2F%3Fp%3D110&t=Control+de+sesiones+%26%238211%3B+Autenticaci%C3%B3n+de+usuarios+usando+PHP+y+MySQL" title="Share this entry on Facebook">Facebook</a> <a href="http://twitter.com/home?status=Currently+reading+" title="Share this entry on Twitter">Twitter</a></div>
+						
+					</div><!-- .hentry -->
+
+					<div class="entry-tags"><span class="post_tag"><a href="http://www.uees.edu.sv/blogs/oscard/?tag=autenticacion" rel="tag"><span>autenticacion</span></a><a href="http://www.uees.edu.sv/blogs/oscard/?tag=control" rel="tag"><span>control</span></a><a href="http://www.uees.edu.sv/blogs/oscard/?tag=inicio" rel="tag"><span>inicio</span></a><a href="http://www.uees.edu.sv/blogs/oscard/?tag=mysql" rel="tag"><span>mysql</span></a><a href="http://www.uees.edu.sv/blogs/oscard/?tag=php" rel="tag"><span>php</span></a><a href="http://www.uees.edu.sv/blogs/oscard/?tag=programacion-2" rel="tag"><span>programacion</span></a><a href="http://www.uees.edu.sv/blogs/oscard/?tag=sesion" rel="tag"><span>sesion</span></a></span></div>
+					
+	
+	<div id="sidebar-after-singular" class="sidebar utility">
+
+		<div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+			<div class="ui-tabs-wrap">
+
+				<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+					<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="http://www.uees.edu.sv/blogs/oscard/?p=110#singular-post-tabs-1">Artículos parecidos</a></li>
+					<li class="ui-state-default ui-corner-top"><a href="http://www.uees.edu.sv/blogs/oscard/?p=110#singular-post-tabs-2">Más Populares</a></li>
+				</ul><!-- .ui-tabs-nav -->
+
+				<div id="singular-post-tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+
+					
+					
+					
+						<ul class="alignleft">
+
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=835" title="Gracias Totales! UEES!">Gracias Totales! UEES!</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=805" title="Ayuda al desarrollo de software – Control de versiones open source (software libre) – Visual Studio .NET – PHP – etc.">Ayuda al desarrollo de software – Control de versiones open source (software libre) – Visual Studio .NET – PHP – etc.</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=798" title="Te interesa la auditoría de seguridad y la seguridad informática en general? Aprendamos BackTrack 5!">Te interesa la auditoría de seguridad y la seguridad informática en general? Aprendamos BackTrack 5!</a></li>
+						
+															</ul><ul class="alignright">
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=794" title="Búsqueda de nuevos o cambios de archivos existentes en los últimos n días por línea de comando">Búsqueda de nuevos o cambios de archivos existentes en los últimos n días por línea de comando</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=787" title="Configuración de run-level (Administración de servicios) en Ubuntu Server">Configuración de run-level (Administración de servicios) en Ubuntu Server</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=782" title="Inicio de Matricula 2013 ciclo 2 en la UEES!">Inicio de Matricula 2013 ciclo 2 en la UEES!</a></li>
+						
+						</ul>
+
+					
+				</div><!-- #singular-post-tabs-1 .ui-tabs-panel -->
+
+				<div id="singular-post-tabs-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+
+					
+					
+					
+						<ul class="alignleft">
+
+						
+							
+							<li><a href="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Control de sesiones – Autenticación de usuarios usando PHP y MySQL.htm" title="Control de sesiones – Autenticación de usuarios usando PHP y MySQL">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=79" title="Reducir el tamaño de archivo del Log de transacciones en SQL Server 2008">Reducir el tamaño de archivo del Log de transacciones en SQL Server 2008</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=98" title="Video animaciones con Go!Animate – Herramienta online">Video animaciones con Go!Animate – Herramienta online</a></li>
+						
+															</ul><ul class="alignright">
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=627" title="Importancia del modelo OSI en el conocimiento de Redes">Importancia del modelo OSI en el conocimiento de Redes</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=675" title="Entorno conectado en VB.NET (versión 2005 – 2010 probado)">Entorno conectado en VB.NET (versión 2005 – 2010 probado)</a></li>
+						
+							
+							<li><a href="http://www.uees.edu.sv/blogs/oscard/?p=698" title="Entorno desconectado en VB.NET (Versión 2005 – 2010 probado)">Entorno desconectado en VB.NET (Versión 2005 – 2010 probado)</a></li>
+						
+						</ul>
+
+					
+				</div><!-- #singular-post-tabs-2 .ui-tabs-panel -->
+
+			</div><!-- .ui-tabs-wrap -->
+
+		</div><!-- .ui-tabs -->
+
+	</div><!-- #sidebar-singular -->
+
+
+					
+					
+<div id="comments-template">
+
+	<div class="comments-wrap">
+
+		<div id="comments">
+
+			
+								
+				<h3 id="comments-number" class="comments-header">57 Respuestas</h3>
+
+				
+				<ol class="comment-list">
+					
+	<li id="comment-85" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Edgardo Bustamante" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/25ae683a0a893a969c44876a08a6916e" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Edgardo Bustamante</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Jueves, febrero 21st, 2013, 11:26 pm">21 febrero, 2013</abbr> at <abbr class="comment-time" title="Jueves, febrero 21st, 2013, 11:26 pm">11:26 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-85" title="Permalink to comment 85">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=85#respond" onclick="return addComment.moveForm(&quot;comment-85&quot;, &quot;85&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Muchicimas gracias Oscar excelente publicacion y bastante sencilla…</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-86" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, febrero 22nd, 2013, 8:04 pm">22 febrero, 2013</abbr> at <abbr class="comment-time" title="Viernes, febrero 22nd, 2013, 8:04 pm">8:04 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-86" title="Permalink to comment 86">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=86#respond" onclick="return addComment.moveForm(&quot;comment-86&quot;, &quot;86&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Muchas Gracias!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-134" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="roberto" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/be9f52f4179a6ab66e0c1027e1e3ee70" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">roberto</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Domingo, marzo 10th, 2013, 9:26 pm">10 marzo, 2013</abbr> at <abbr class="comment-time" title="Domingo, marzo 10th, 2013, 9:26 pm">9:26 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-134" title="Permalink to comment 134">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=134#respond" onclick="return addComment.moveForm(&quot;comment-134&quot;, &quot;134&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>hola!!<br>
+en la parte de autentificación en este código solo me permite un usuario<br>
+if($nmyusuario != 0){<br>
+ $sql = “select idusuario<br>
+ from usuarios<br>
+ where estado = 1<br>
+ and idusuario = ‘”.htmlentities($_POST["usuario"]).”‘<br>
+and clave = ‘”.md5(htmlentities($_POST["clave"])).”‘”;<br>
+quisiera me apoyaras para que se pueda logear mas de un susuario.<br>
+gracias.<br>
+saludos</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-138" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, marzo 11th, 2013, 3:02 pm">11 marzo, 2013</abbr> at <abbr class="comment-time" title="Lunes, marzo 11th, 2013, 3:02 pm">3:02 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-138" title="Permalink to comment 138">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=138#respond" onclick="return addComment.moveForm(&quot;comment-138&quot;, &quot;138&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola.<br>
+La autenticación se hace contra una tabla de una base de datos, por lo que ahí en la tabla de “usuarios” puedes tener todos los usuarios que se podrían “loguear”. Solo hay que tener cuidado de ingresar la clave (puede ser desde phpmyadmin) con la función MD5.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-137" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Carlos Rodas" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/599ea0274e3120c4cd76666c0584fcfc" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Carlos Rodas</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, marzo 11th, 2013, 2:26 pm">11 marzo, 2013</abbr> at <abbr class="comment-time" title="Lunes, marzo 11th, 2013, 2:26 pm">2:26 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-137" title="Permalink to comment 137">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=137#respond" onclick="return addComment.moveForm(&quot;comment-137&quot;, &quot;137&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Excelente mi amigo muchisimas gracais, facil y muy funcional</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-139" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, marzo 11th, 2013, 3:03 pm">11 marzo, 2013</abbr> at <abbr class="comment-time" title="Lunes, marzo 11th, 2013, 3:03 pm">3:03 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-139" title="Permalink to comment 139">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=139#respond" onclick="return addComment.moveForm(&quot;comment-139&quot;, &quot;139&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>De nada! Saludos!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-143" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="David" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/f9e1151fc7c931e7b5c64e6371a6c3ef" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">David</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, marzo 12th, 2013, 11:53 am">12 marzo, 2013</abbr> at <abbr class="comment-time" title="Martes, marzo 12th, 2013, 11:53 am">11:53 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-143" title="Permalink to comment 143">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=143#respond" onclick="return addComment.moveForm(&quot;comment-143&quot;, &quot;143&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola Oscar, saludos! Gracias por el código. Te comento que ya hice la BD, ya corrí el proyecto y va todo bien, pero a la hora de ingresar, siempre me saca al: echo “alert(‘La contrase\u00f1a del usuario no es correcta.’);<br>
+               window.location.href=\”index.php\”"; </p>
+<p>He intentado varias cosas pero aún no logro que ingrese, incluso no se si estará accesando a la BD. Sabés que puede estar pasando? Gracias.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-147" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, marzo 13th, 2013, 9:32 am">13 marzo, 2013</abbr> at <abbr class="comment-time" title="Miércoles, marzo 13th, 2013, 9:32 am">9:32 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-147" title="Permalink to comment 147">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=147#respond" onclick="return addComment.moveForm(&quot;comment-147&quot;, &quot;147&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>y te manda algún mensaje de error? si lo puedes copiar para ver. Lo otro que se me ocurre es que tal el registro de usuario que has creado, en el campo contraseña, está encriptada la contraseña con MD5? Te tira algún error de conexión o algún tipo de error el php?</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-172" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="David" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/f9e1151fc7c931e7b5c64e6371a6c3ef" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">David</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Sábado, marzo 16th, 2013, 9:33 am">16 marzo, 2013</abbr> at <abbr class="comment-time" title="Sábado, marzo 16th, 2013, 9:33 am">9:33 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-172" title="Permalink to comment 172">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=172#respond" onclick="return addComment.moveForm(&quot;comment-172&quot;, &quot;172&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Correcto Oscar, me lanza: alert(‘La contrase\u00f1a del usuario no es correcta.’); window.location.href=\”index.php\”"; } }else{ echo”"; } mysql_close($link); ?&gt;</p>
+<p>Lo cuál es el código para decir que la contraseña no es correcta, en la BD lo tengo creado con la contraseña y con md5, esto ya que es código lo está leyendo así. He probado varias cosas pero sigue igual.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-173" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Sábado, marzo 16th, 2013, 10:06 am">16 marzo, 2013</abbr> at <abbr class="comment-time" title="Sábado, marzo 16th, 2013, 10:06 am">10:06 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-173" title="Permalink to comment 173">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=173#respond" onclick="return addComment.moveForm(&quot;comment-173&quot;, &quot;173&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Lo siento… no entiendo bien. En la página, se muestra impreso eso de:<br>
+alert(‘La contrase\u00f1a del usuario no es correcta.’); window.location.href=\”index.php\””; } }else{ echo””; } mysql_close($link); ?&gt;<br>
+o aparece una ventanita con la información que está dentro del alert? osea:<br>
+“La contraseña del usuario no es correcta”<br>
+Si es lo primero, probablemente no está la etiqueta &lt; script&gt; antes de donde dice alert. No sé si pudieras colocar el fragmento de código completo de cómo lo tienes?<br>
+Saludos!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-198" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Yuridia" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/e127a153324f492650ebd06d42bde613" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Yuridia</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, marzo 22nd, 2013, 1:00 pm">22 marzo, 2013</abbr> at <abbr class="comment-time" title="Viernes, marzo 22nd, 2013, 1:00 pm">1:00 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-198" title="Permalink to comment 198">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=198#respond" onclick="return addComment.moveForm(&quot;comment-198&quot;, &quot;198&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola, yo tambien estoy probando tu codigo y me marca el mismo error que a David. </p>
+<p>y no sale el error en una ventana externa, sale una ves que ingresamos el nombre y la contraseña en la misma ventana del explorador es decir pasa a :</p>
+<p><a href="http://localhost/auth1/control.php" rel="nofollow">http://localhost/auth1/control.php</a></p>
+<p>y ahi sale ese mensaje:</p>
+<p>alert(‘La contrase\u00f1a del usuario no es correcta.’); window.location.href=\”index.php\”"; } }else{ echo”"; } mysql_close($link); ?&gt; </p>
+<p>el codigo que tenemos es el que pusiste para descargar en control.php</p>
+<p>&lt;?<br>
+     /* A continuación, realizamos la conexión con nuestra base de datos en MySQL */<br>
+     $link = mysql_connect("localhost","root","123456");<br>
+     mysql_select_db("base_datos", $link);</p>
+<p>     /* El query valida si el usuario ingresado existe en la base de datos. Se utiliza la función<br>
+     htmlentities para evitar inyecciones SQL. */<br>
+     $myusuario = mysql_query("select idusuario from usuarios<br>
+                                 where idusuario =  '".htmlentities($_POST["usuario"])."'",$link);<br>
+     $nmyusuario = mysql_num_rows($myusuario);</p>
+<p>     //Si existe el usuario, validamos también la contraseña ingresada y el estado del usuario…<br>
+     if($nmyusuario != 0){<br>
+          $sql = "select idusuario<br>
+               from usuarios<br>
+               where estado = 1<br>
+               and idusuario = '".htmlentities($_POST["usuario"])."'<br>
+               and clave = '".md5(htmlentities($_POST["clave"]))."'";<br>
+          $myclave = mysql_query($sql,$link);<br>
+          $nmyclave = mysql_num_rows($myclave);</p>
+<p>          //Si el usuario y clave ingresado son correctos (y el usuario está activo en la BD), creamos la sesión del mismo.<br>
+          if($nmyclave != 0){<br>
+               session_start();<br>
+               //Guardamos dos variables de sesión que nos auxiliará para saber si se está o no "logueado" un usuario<br>
+               $_SESSION["autentica"] = "SIP";<br>
+               $_SESSION["usuarioactual"] = mysql_result($myclave,0,0); //nombre del usuario logueado.<br>
+               //Direccionamos a nuestra página principal del sistema.<br>
+               header ("Location: app.php");<br>
+          }<br>
+          else{<br>
+               echo"alert(‘La contrase\u00f1a del usuario no es correcta.’);<br>
+               window.location.href=\”index.php\”";<br>
+          }<br>
+     }else{<br>
+          echo”alert(‘El usuario no existe.’);window.location.href=\”index.php\”";<br>
+     }<br>
+     mysql_close($link);<br>
+?&gt;</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-200" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, marzo 22nd, 2013, 2:38 pm">22 marzo, 2013</abbr> at <abbr class="comment-time" title="Viernes, marzo 22nd, 2013, 2:38 pm">2:38 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-200" title="Permalink to comment 200">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=200#respond" onclick="return addComment.moveForm(&quot;comment-200&quot;, &quot;200&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Qué raro Yuridia… Acabo de descargar el archivo de la entrada, lo puse en un servidor web, cree una base de datos, la tabla, los campos, agregué un par de registros y funcionó bien la autenticación… De hecho, lo hice en video para los que no me creen jejejjj</p>
+<p>Video:</p>
+<p><a href="http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/comprobacion.mp4" rel="nofollow">http://www.uees.edu.sv/blogs/oscard/wp-content/uploads/2012/12/comprobacion.mp4</a></p>
+<p>Tal vez si pudieras poner una captura de pantalla del error?</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-240" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="matias" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/e3134f7a1dd22eb800b46f067b638e6c" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">matias</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, marzo 26th, 2013, 2:37 pm">26 marzo, 2013</abbr> at <abbr class="comment-time" title="Martes, marzo 26th, 2013, 2:37 pm">2:37 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-240" title="Permalink to comment 240">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=240#respond" onclick="return addComment.moveForm(&quot;comment-240&quot;, &quot;240&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>me sale un cartel diciendo que el usuario no existe y no entiendo cual puede ser el problema..me darias una mano??</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-291" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, abril 8th, 2013, 3:06 pm">8 abril, 2013</abbr> at <abbr class="comment-time" title="Lunes, abril 8th, 2013, 3:06 pm">3:06 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-291" title="Permalink to comment 291">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=291#respond" onclick="return addComment.moveForm(&quot;comment-291&quot;, &quot;291&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>No sé si has visto el video que coloqué en un comentario anterior? ahí esta paso por paso para que funcione la cosa y, como otro detalle que es netamente referente a la configuración del PHP.ini, deben de estar la siguiente banderas configuradas de la siguiente manera:</p>
+<p>register_globals = On<br>
+short_open_tag = On</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-245" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Yuridia" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/e127a153324f492650ebd06d42bde613" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Yuridia</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, marzo 27th, 2013, 2:02 pm">27 marzo, 2013</abbr> at <abbr class="comment-time" title="Miércoles, marzo 27th, 2013, 2:02 pm">2:02 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-245" title="Permalink to comment 245">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=245#respond" onclick="return addComment.moveForm(&quot;comment-245&quot;, &quot;245&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Gracias por el video aclare algunas otras dudas pero gracias a eso pude encontrar el error, que en realidad no es error más bien el PHP instalado (en mi caso) no admite en su configuración el uso de etiquetas PHP en formato abreviado (“&lt;?” en lugar de “&lt;?php” ). Así que sustituí estas etiquetas y asunto arreglado.</p>
+<p>Encontré alguna información acerca de activar esta compatibilidad si tienes acceso a modificar el archivo php.ini, puedes activar la compatibilidad con las etiquetas abrevidadas con la siguiente línea en tu php.ini (posiblemente ya exista, pero con valor off):<br>
+short_open_tag = On<br>
+Pero en lo particular solo cambie las etiquetas y funciono. Mil Gracias!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-292" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, abril 8th, 2013, 3:06 pm">8 abril, 2013</abbr> at <abbr class="comment-time" title="Lunes, abril 8th, 2013, 3:06 pm">3:06 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-292" title="Permalink to comment 292">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=292#respond" onclick="return addComment.moveForm(&quot;comment-292&quot;, &quot;292&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Ok, excelente detalle! Gracias por el aporte!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-271" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Denis O" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/6b25752751f2e59f64c8db23846738f2" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Denis O</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, abril 5th, 2013, 2:43 am">5 abril, 2013</abbr> at <abbr class="comment-time" title="Viernes, abril 5th, 2013, 2:43 am">2:43 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-271" title="Permalink to comment 271">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=271#respond" onclick="return addComment.moveForm(&quot;comment-271&quot;, &quot;271&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>buenas he tratado por todos los medios correr este ejemplo y me da el error<br>
+warning: Mysql_num_rows: Supplied Argument is not a valid Mysql….<br>
+he gravado la tabla igual solo que puse un usuario para la base de datos que la llamo academia y el usuario es useracademia con su clave. Esto lo pongo en control.php .<br>
+No se si la clave que hay que poner ahi es la del root que porsupuesto es otra.<br>
+El warning siempre me lo da en la linea donde va mysql_num_rows o myswl_result()<br>
+si me puedes ayudar te lo agradecería. no logro hacer que conecte con el ejemplo del registro ingresado en la tabla usuarios.<br>
+Ya llevo rato en esto y necesito de tu ayuda. gracias de antemano y buen aporte para los que empezamos.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-272" class="comment odd alt thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Denis O" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/6b25752751f2e59f64c8db23846738f2" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Denis O</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, abril 5th, 2013, 2:51 am">5 abril, 2013</abbr> at <abbr class="comment-time" title="Viernes, abril 5th, 2013, 2:51 am">2:51 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-272" title="Permalink to comment 272">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=272#respond" onclick="return addComment.moveForm(&quot;comment-272&quot;, &quot;272&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Oscar, creo que de tanto andar yo mismo me conteste. Cambie el usuario de root y la clave respectiva y se ejecuto en forma correcta. gracias por tu aporte. Varias horas intentando vale la pena. El que persevera alcanza. Saludos y gracias por este aporte.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-293" class="comment byuser comment-author-oscard bypostauthor even depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, abril 8th, 2013, 3:07 pm">8 abril, 2013</abbr> at <abbr class="comment-time" title="Lunes, abril 8th, 2013, 3:07 pm">3:07 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-293" title="Permalink to comment 293">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=293#respond" onclick="return addComment.moveForm(&quot;comment-293&quot;, &quot;293&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Ok, que bueno que te haya funcionado al final! ^^</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-281" class="comment odd alt thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Alejandro" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/db7c38841ed7f1bb701d9aec0a7e43f3" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Alejandro</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Domingo, abril 7th, 2013, 11:05 am">7 abril, 2013</abbr> at <abbr class="comment-time" title="Domingo, abril 7th, 2013, 11:05 am">11:05 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-281" title="Permalink to comment 281">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=281#respond" onclick="return addComment.moveForm(&quot;comment-281&quot;, &quot;281&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola Ing. yo tengo el problema de que al mostrar el mensaje de bienvenida el lugar en donde debería salir el nombre de usuario queda en y al presionar salir también queda en blanco y no re direcciona, podrías darme una solución? desde ya gracias</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-294" class="comment byuser comment-author-oscard bypostauthor even thread-odd thread-alt depth-1 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, abril 8th, 2013, 3:08 pm">8 abril, 2013</abbr> at <abbr class="comment-time" title="Lunes, abril 8th, 2013, 3:08 pm">3:08 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-294" title="Permalink to comment 294">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=294#respond" onclick="return addComment.moveForm(&quot;comment-294&quot;, &quot;294&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Bueno, quizás lo primero es ver si en la configuración de tu php (php.ini) están las siguientes banderas configuradas de la siguiente manera:</p>
+<p>register_globals = On<br>
+short_open_tag = On</p>
+<p>De ahí, tienes acceso a tu phpmyadmin? dejaste la contraseña como md5? arriba dejé un video referente al proceso para hacer funcionar el código que dejé en éste post.</p>
+<p>Saludos!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-327" class="comment odd alt thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Eliot" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/f7a8eec5c2a6497c66a5e3df3e08e529" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Eliot</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, abril 19th, 2013, 3:36 am">19 abril, 2013</abbr> at <abbr class="comment-time" title="Viernes, abril 19th, 2013, 3:36 am">3:36 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-327" title="Permalink to comment 327">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=327#respond" onclick="return addComment.moveForm(&quot;comment-327&quot;, &quot;327&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola: he intentado y todo parece funcionar,<br>
+pero si yo ingreso desde localhost/app.php<br>
+me aparece la sesion de usuario? no deberia estar oculta ?<br>
+otra consulta:<br>
+//Direccionamos a nuestra página principal del sistema.<br>
+header (“Location: app.php”);<br>
+}<br>
+else{<br>
+echo”alert(‘La contrase\u00f1a del usuario no es correcta.’);<br>
+window.location.href=\”index.php\””;<br>
+}<br>
+}else{<br>
+echo”alert(‘El usuario no existe.’);window.location.href=\”index.php\””;<br>
+}<br>
+mysql_close($link);<br>
+?&gt;</p>
+<p>aqui se usa   ……… .el windows.location …. esta usando java para levantar la href: pregunta ¿ si el servidor localhost no tiene instalado java este codigo no funcionaría?<br>
+o como es .</p>
+<p>Saludos cordiales, excelente aportación</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-328" class="comment even depth-2 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Eliot" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/f7a8eec5c2a6497c66a5e3df3e08e529" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Eliot</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, abril 19th, 2013, 4:08 am">19 abril, 2013</abbr> at <abbr class="comment-time" title="Viernes, abril 19th, 2013, 4:08 am">4:08 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-328" title="Permalink to comment 328">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=328#respond" onclick="return addComment.moveForm(&quot;comment-328&quot;, &quot;328&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Perdona Oscar solucionado, mi problema estaba en que en el archivo app.php en la primera linea no encontraba el fichero seguridad.php</p>
+<p>por hacer copy and paste, debia haberlo escrito, las ” ” son distintas en mi ordenador<br>
+ahora ya no carga app.php desde el localhost lo direccona a index.php<br>
+Excelente<br>
+Saludos Cordiales</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-350" class="comment byuser comment-author-oscard bypostauthor odd alt depth-3 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, abril 24th, 2013, 11:38 am">24 abril, 2013</abbr> at <abbr class="comment-time" title="Miércoles, abril 24th, 2013, 11:38 am">11:38 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-350" title="Permalink to comment 350">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=350#respond" onclick="return addComment.moveForm(&quot;comment-350&quot;, &quot;350&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Ok, Excelente! Saludos!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-354" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://x/" rel="external nofollow" title="jhonatan"><img alt="jhonatan" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/f400e157df23b515ca4ce73355c1e50f" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://x"><a href="http://x/" title="jhonatan" class="url" rel="external nofollow">jhonatan</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, abril 24th, 2013, 8:06 pm">24 abril, 2013</abbr> at <abbr class="comment-time" title="Miércoles, abril 24th, 2013, 8:06 pm">8:06 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-354" title="Permalink to comment 354">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=354#respond" onclick="return addComment.moveForm(&quot;comment-354&quot;, &quot;354&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Ingeniero buenas noches, </p>
+<p>Como hago para que una vez logeado el usuario este haga modificaciones y quede registrado en la BD,<br>
+ejemplo:  Un empleado se logea en la pagina, crea un registro de un alumno del colegio y este registro queda guardado en la BD.<br>
+al consultar la bd se  pueda ver quien se logeo y creo ese registro de alumno.  </p>
+<p>Agradezco su respuesta.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-360" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Jueves, abril 25th, 2013, 2:57 pm">25 abril, 2013</abbr> at <abbr class="comment-time" title="Jueves, abril 25th, 2013, 2:57 pm">2:57 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-360" title="Permalink to comment 360">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=360#respond" onclick="return addComment.moveForm(&quot;comment-360&quot;, &quot;360&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Bueno, ahí nos vamos como que más haya… posiblemente en un post a futuro cree una entrada para “crear mantenimientos en PHP + MySQL” y también en un futuro post hablaría también sobre los triggers en MySQL, que básicamente es lo que necesitas. Un trigger, viéndolo más sencillamente, es cuando se ejecuta un procedimiento en la base de datos (generalmente de inserción de un registro en una tabla bitácora o de auditoría), cuando sucede una inserción/modificación/eliminación de/en un registro en una tabla específica. Más o menos creo que por ahí va, pero es un tema a parte que espero poder escribir pronto.</p>
+<p>Saludos!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-383" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="gustavo" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/ff7077ec89fe788f6ff040740d78eb16" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">gustavo</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Sábado, abril 27th, 2013, 3:27 pm">27 abril, 2013</abbr> at <abbr class="comment-time" title="Sábado, abril 27th, 2013, 3:27 pm">3:27 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-383" title="Permalink to comment 383">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=383#respond" onclick="return addComment.moveForm(&quot;comment-383&quot;, &quot;383&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Ingeniero buenas tardes</p>
+<p>Primero para felicitarle por ese aporte tan valioso,<br>
+y lo otro para hacer le una consulta, resulta que el código me funciona<br>
+hasta cierta parte me logueo normal y cuando me envía a la pagina App.php<br>
+no me muestra el nombre del usuario me sale el siguiente error.</p>
+<p>Notice: Undefined variable: _SESSION in C:\xampp\htdocs\otros\app.php on line 11</p>
+<p>si me pudiera colaborar  le estaría muy agradecido…..</p>
+<p>Gracias</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-399" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, abril 29th, 2013, 8:08 am">29 abril, 2013</abbr> at <abbr class="comment-time" title="Lunes, abril 29th, 2013, 8:08 am">8:08 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-399" title="Permalink to comment 399">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=399#respond" onclick="return addComment.moveForm(&quot;comment-399&quot;, &quot;399&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Buen día! Ok, tengo la sospecha que hay que hacer algo más en el PHP.ini de tu XAMPP. Verifica como está la configuración:<br>
+session.auto_start = 0</p>
+<p>Creo que lo ideal es que esté en “cero” (0). Realiza el cambio, reinicias el servicio de apache y pues verifica para ver qué tal.</p>
+<p>Saludos!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-390" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="javier" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/e18d984059c41f266df99f6144d1b280" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">javier</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Domingo, abril 28th, 2013, 7:38 pm">28 abril, 2013</abbr> at <abbr class="comment-time" title="Domingo, abril 28th, 2013, 7:38 pm">7:38 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-390" title="Permalink to comment 390">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=390#respond" onclick="return addComment.moveForm(&quot;comment-390&quot;, &quot;390&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>buenas noches ingeniero Oscar  Diaz,</p>
+<p>tengo un problema con el manejo de sesiones lo que pasa es que necesito realizar una pagina web ,pero no puedo manejar sesiones contra una tabla usuarios dentro de la base de datos, si no contra el usuario directamente del gestor y no quemar el usuario root como se muestra en el ejemplo espero me pueda colaborar con eso muchas gracias.</p>
+<p>att: Javier Rodriguez</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-400" class="comment byuser comment-author-oscard bypostauthor odd alt thread-even depth-1 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, abril 29th, 2013, 8:14 am">29 abril, 2013</abbr> at <abbr class="comment-time" title="Lunes, abril 29th, 2013, 8:14 am">8:14 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-400" title="Permalink to comment 400">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=400#respond" onclick="return addComment.moveForm(&quot;comment-400&quot;, &quot;400&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Buen día.<br>
+Referente a tu solicitud, me parece un poco extraño que quieras autenticar los usuarios con logins de mysql… generalmente se crea una tabla de usuarios porque, adicional al típico campo de usuario y contraseña también colocas ahí cosas importantes, por ejemplo el grupo de usuarios al que pertenece, nombre para mostrar, banderas diversas (activo, con privilegios especiales, etc.). Pero bueno, supongo que si colocas en lugar del usuario y contraseña quemado (no necesariamente root pero por ejemplo lo hice con dicho usuario):</p>
+<p>$link = mysql_connect(‘localhost’, $_POST["usuario"], $_POST["clave"]);</p>
+<p>Tendría que funcionar como quieres. Obviamente, deberías de crear dicho usuario en el MySQL y pues garantizar los permisos que consideres necesarios (select, update, insert, delete, etc. en la base de datos específica).</p>
+<p>Saludos!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-408" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="osvaldo crepin" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/8435c2ed01b137aba8aa70dafa09527a" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">osvaldo crepin</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, abril 29th, 2013, 10:26 pm">29 abril, 2013</abbr> at <abbr class="comment-time" title="Lunes, abril 29th, 2013, 10:26 pm">10:26 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-408" title="Permalink to comment 408">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=408#respond" onclick="return addComment.moveForm(&quot;comment-408&quot;, &quot;408&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>muy buenas noches ingeniero, primero que todo quiero agradecer el gran aporte que hace dando de su conociento hacia la poblacion.<br>
+bueno lo que le quiero comentar es que al ingresar la el usario y la contraña no importa cual sea me da este erro : alert(‘La contrase\u00f1a del usuario no es correcta.’); window.location.href=\”index.php\”"; } }else{ echo”"; } mysql_close($link); ?&gt;<br>
+y si no he ingresado datos pero le doy entrar siempre aparece es mismo error.<br>
+perdon pero quiero saber si sera que hay algun error en la base de datos o hay algun codigo que modificar muchas gracias ingeniero<br>
+buenas noche</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-410" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, abril 30th, 2013, 5:22 pm">30 abril, 2013</abbr> at <abbr class="comment-time" title="Martes, abril 30th, 2013, 5:22 pm">5:22 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-410" title="Permalink to comment 410">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=410#respond" onclick="return addComment.moveForm(&quot;comment-410&quot;, &quot;410&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Al parecer es un problema de una configuración del php.ini (como se menciona en un comentario de más arriba).</p>
+<p>PHP no admite en su configuración el uso de etiquetas PHP en formato abreviado ( “&lt; ?”  en lugar de  “&lt; ?php”  ). Así que sustituye dicha etiqueta ó, modifica tu php.ini en la configuración:</p>
+<p>short_open_tag = On</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-482" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="gustavo" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/ff7077ec89fe788f6ff040740d78eb16" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">gustavo</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, mayo 6th, 2013, 12:01 pm">6 mayo, 2013</abbr> at <abbr class="comment-time" title="Lunes, mayo 6th, 2013, 12:01 pm">12:01 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-482" title="Permalink to comment 482">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=482#respond" onclick="return addComment.moveForm(&quot;comment-482&quot;, &quot;482&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola Ingeniero </p>
+<p>Buenas tardes</p>
+<p>Para hacerle una consulta, lo que pasa es que siempre para seguridad de inyección SQL he usado esta función: “mysql_real_escape_string”   y mirando su código veo que usted utiliza una función diferente: ” htmlentities   “, mi pregunta es ¿cual de los dos métodos en mas seguro?</p>
+<p>Gracias por su atención.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-483" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, mayo 6th, 2013, 12:08 pm">6 mayo, 2013</abbr> at <abbr class="comment-time" title="Lunes, mayo 6th, 2013, 12:08 pm">12:08 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-483" title="Permalink to comment 483">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=483#respond" onclick="return addComment.moveForm(&quot;comment-483&quot;, &quot;483&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Según lo que dicen… Es aconsejable utilizar mysql_real_escape_string() para guardar en la bd y htmlentities() para imprimir los datos. mysql_real_escape_string() es una función creada específicamente para el tema de inyecciones de SQL, por lo que me parece bien que la uses.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-485" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="gustavo" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/ff7077ec89fe788f6ff040740d78eb16" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">gustavo</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, mayo 7th, 2013, 10:53 am">7 mayo, 2013</abbr> at <abbr class="comment-time" title="Martes, mayo 7th, 2013, 10:53 am">10:53 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-485" title="Permalink to comment 485">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=485#respond" onclick="return addComment.moveForm(&quot;comment-485&quot;, &quot;485&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola Ingeniero</p>
+<p>Buenas tardes</p>
+<p>En este código como hago para que en el campo donde va el usuario me reconozca tanto las mayúsculas como las minúscula, resulta que mi usuario lo registre con minúscula sin embargo puedo ingresar tanto con mayúsculas como con minúsculas. y pienso que no debería ser así</p>
+<p>Gracias por su atención.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-490" class="comment byuser comment-author-oscard bypostauthor odd alt depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, mayo 8th, 2013, 2:14 pm">8 mayo, 2013</abbr> at <abbr class="comment-time" title="Miércoles, mayo 8th, 2013, 2:14 pm">2:14 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-490" title="Permalink to comment 490">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=490#respond" onclick="return addComment.moveForm(&quot;comment-490&quot;, &quot;490&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Creo que es un tema del MySQL…<br>
+utiliza COLLATE utf8_bin. Por ejemplo:<br>
+select * from TABLA where campo COLLATE utf8_bin = ‘UnTexto’</p>
+<p>Así te respetaría la mayúscula/minúscula</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-536" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="José Carlos" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/1373755a4b81e0c71096fcfb29977133" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">José Carlos</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Domingo, mayo 12th, 2013, 1:08 pm">12 mayo, 2013</abbr> at <abbr class="comment-time" title="Domingo, mayo 12th, 2013, 1:08 pm">1:08 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-536" title="Permalink to comment 536">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=536#respond" onclick="return addComment.moveForm(&quot;comment-536&quot;, &quot;536&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Buenas tardes:</p>
+<p>Excelente aporte, soy nuevo en el tema de PHP, me gustaría saber si podría hacer un tutorial con el mismo tema pero con MVC, es que no me es muy claro la conversión y tengo entendido que es mucho mejor éste tipo de estructura, aunque la verdad me es un tanto complicado. Mil gracias por su tiempo y dedicación. Buen día</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-562" class="comment odd alt thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Ariel" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/a30052846b325345c03b7a66373a2e8d" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Ariel</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, mayo 14th, 2013, 2:08 pm">14 mayo, 2013</abbr> at <abbr class="comment-time" title="Martes, mayo 14th, 2013, 2:08 pm">2:08 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-562" title="Permalink to comment 562">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=562#respond" onclick="return addComment.moveForm(&quot;comment-562&quot;, &quot;562&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Ingeniero.<br>
+               Muchas gracias por tu ayuda es lo que he estado buscando hace mucho tiempo, para poder estudiarlo y crear mis propios accesos.</p>
+<p>Nuevamente muchas gracias, saludos y sigue haciendo más de estos Tuttos, ya que son magnificos.</p>
+<p>Saludos<br>
+Ariel</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-563" class="comment byuser comment-author-oscard bypostauthor even thread-even depth-1 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, mayo 14th, 2013, 2:13 pm">14 mayo, 2013</abbr> at <abbr class="comment-time" title="Martes, mayo 14th, 2013, 2:13 pm">2:13 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-563" title="Permalink to comment 563">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=563#respond" onclick="return addComment.moveForm(&quot;comment-563&quot;, &quot;563&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Veré si saco más material! Gracias!!! Saludos.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-606" class="comment odd alt thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="jose" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/90551d14678873ad4f8962432a10752f" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">jose</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, mayo 17th, 2013, 4:29 pm">17 mayo, 2013</abbr> at <abbr class="comment-time" title="Viernes, mayo 17th, 2013, 4:29 pm">4:29 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-606" title="Permalink to comment 606">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=606#respond" onclick="return addComment.moveForm(&quot;comment-606&quot;, &quot;606&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Sr. Oscar una pregunta, el codigo de manejo de session en php es diferente para la version 5.3.13..<br>
+Lo digo porque estoy utilizando un codigo de sesiones que en mi version de php 5.2.6 funciona, y en un servidor web privado 5.3.13 no funciona como deberia.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-650" class="comment byuser comment-author-oscard bypostauthor even depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, mayo 20th, 2013, 7:56 am">20 mayo, 2013</abbr> at <abbr class="comment-time" title="Lunes, mayo 20th, 2013, 7:56 am">7:56 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-650" title="Permalink to comment 650">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=650#respond" onclick="return addComment.moveForm(&quot;comment-650&quot;, &quot;650&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Según tengo entendido, si funciona. Solo con la versión 6 de php sé que no funciona. Verifica la configuración de tu php.ini de tal manera que estén las siguientes configuraciones así:</p>
+<p>register_globals = On<br>
+short_open_tag = On<br>
+session.auto_start = 0</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-688" class="comment odd alt thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="luis Garcia" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/1b3c174d7b6eaa74e1ddaf83c64f247a" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">luis Garcia</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Domingo, mayo 26th, 2013, 9:38 pm">26 mayo, 2013</abbr> at <abbr class="comment-time" title="Domingo, mayo 26th, 2013, 9:38 pm">9:38 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-688" title="Permalink to comment 688">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=688#respond" onclick="return addComment.moveForm(&quot;comment-688&quot;, &quot;688&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>buenas amigo fijese que estoy un sistema en php de mentoria osea que cada usuario tenga alumnos diferentes que llos ingresan no quiero que cada mentor se mesclen si no salgan los que el ingreso pero ya tengo todo lo que necesito es hacer que cada usuario que se logee de la pagina inice sesion pero no se como hacerlo te agradeceria mucho si me pudieras ayudar</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-694" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Ervin" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/8da80ac0a4596a27bd48e1b1cadf0ff0" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Ervin</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, junio 5th, 2013, 8:33 am">5 junio, 2013</abbr> at <abbr class="comment-time" title="Miércoles, junio 5th, 2013, 8:33 am">8:33 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-694" title="Permalink to comment 694">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=694#respond" onclick="return addComment.moveForm(&quot;comment-694&quot;, &quot;694&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Excelente aportacion Oscar, ahora si quisieramos agregar un avatar de Hombre o mujer al logeo; parecido al logeo de google que aparece un retrato y el nombre del usuario.</p>
+<p>Saludos desde Chiapas, Mexico.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-722" class="comment odd alt thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Andres" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/b7e1da0a8232b51c990dd90c43d97b9d" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Andres</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, junio 11th, 2013, 7:51 pm">11 junio, 2013</abbr> at <abbr class="comment-time" title="Martes, junio 11th, 2013, 7:51 pm">7:51 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-722" title="Permalink to comment 722">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=722#respond" onclick="return addComment.moveForm(&quot;comment-722&quot;, &quot;722&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Buenas noches</p>
+<p>me funciono perfecto tu aplicacion, el problema es que al validar me aparece bienvenido al sistema, usuario: sin el nombre, como puedo ver el problema del nombre?</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-731" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Marc" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/7bdc56f93a8720901fceb659e416e199" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Marc</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Sábado, junio 15th, 2013, 6:45 am">15 junio, 2013</abbr> at <abbr class="comment-time" title="Sábado, junio 15th, 2013, 6:45 am">6:45 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-731" title="Permalink to comment 731">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=731#respond" onclick="return addComment.moveForm(&quot;comment-731&quot;, &quot;731&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Muy buen articulo, me ha funcionado a la perfección, el problema es que mi intención es apuntar a una BBDD de WordPress y aquí no me valida la contraseña, ¿puede ser porque utilicen otro tipo de compresión? ¿sabrías indicarme como poder solucionarlo?</p>
+<p>De todos modos muchas gracias.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-732" class="comment odd alt thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="johnny troconis" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/0ed369259433b9e99825786e0cc2ccc1" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">johnny troconis</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Sábado, junio 15th, 2013, 8:13 am">15 junio, 2013</abbr> at <abbr class="comment-time" title="Sábado, junio 15th, 2013, 8:13 am">8:13 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-732" title="Permalink to comment 732">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=732#respond" onclick="return addComment.moveForm(&quot;comment-732&quot;, &quot;732&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>hola, tengo un problema, resulta que cuando genero una insert sobre mysql la hace bien pero vuelvo a realizar una consulta y me genera registROs En blanco en LA tablas. igual me pasa al insertarlo desde PHPMYADMIN; PORQUE</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-733" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Leonardo" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/5eb63e4406a67fce697567269aa25d42" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Leonardo</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Sábado, junio 15th, 2013, 11:42 pm">15 junio, 2013</abbr> at <abbr class="comment-time" title="Sábado, junio 15th, 2013, 11:42 pm">11:42 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-733" title="Permalink to comment 733">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=733#respond" onclick="return addComment.moveForm(&quot;comment-733&quot;, &quot;733&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Excelente tutorial, muchas gracias Oscar por este maravilloso aporte, me sirvió un monton, pero ahora una pregunta y si quieisera autenticar pero separando la contraseña de Mysql es decir poniendola en un archivo aparte (por aquello de los cambios sin aviso de contraseña).</p>
+<p>y otra mas en la parte de la validación muestras esto:<br>
+echo”alert(‘La contrase\u00f1a del usuario no es correcta.’);<br>
+window.location.href=\”index.php\””;<br>
+ ahora si yo tengo estos archivos en varias subcarpetas un ejemplo tengo la página llamada \main\ y dentro de esta el login es decir \main\longin\login.html y para mas seguridad he crado un directorio llamado includes dentro de login, es decir la ruta sería \main\login\include\app.php, entonces como hago para hacer que se redireccione a la pag index que está en \main?</p>
+<p>Gracias por tu gran labor.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-739" class="comment odd alt thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Alejandra Fuentes Molina" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/663a46a6751d808e0d92f864428cfbaa" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Alejandra Fuentes Molina</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, junio 19th, 2013, 11:12 am">19 junio, 2013</abbr> at <abbr class="comment-time" title="Miércoles, junio 19th, 2013, 11:12 am">11:12 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-739" title="Permalink to comment 739">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=739#respond" onclick="return addComment.moveForm(&quot;comment-739&quot;, &quot;739&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Hola buenos dias tengo una pregunta!</p>
+<p>Quiero registrar y guardar los usuarios que inician sesion en una tabla de una base de datos, de esta forma podría saber cuántos usuarios han iniciado sesión en el sitio web, qué usuarios y en qué día y hora me podrian ayudar no tengo idea de como hacerlo encontre este codigo pero no se como utilizarlo.</p>
+<p>Porfavor ayudenme es para un proyecto de mi escuela..</p>
+<p>$session_id = session_id();<br>
+    $sql = “INSERT INTO sesiones (user_id, session_id) VALUES (‘” .<br>
+        $userid . “‘, ‘” . $session_id . “‘)’”;<br>
+    $resultado_sql = mysql_query($sql);</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-786" class="comment even thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Jhonatan" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/26b63a32f05f4e939631243b1271a702" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Jhonatan</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Martes, julio 9th, 2013, 11:44 am">9 julio, 2013</abbr> at <abbr class="comment-time" title="Martes, julio 9th, 2013, 11:44 am">11:44 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-786" title="Permalink to comment 786">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=786#respond" onclick="return addComment.moveForm(&quot;comment-786&quot;, &quot;786&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Muchas gracias Sr. Oscar justo buscaba esto para mi proyecto de tesis <img src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/icon_biggrin.gif" alt=":D" class="wp-smiley">  al principio no me salia ya que al ingresar el usuario y la contraseña pues siempre que la contraseña estaba mal y bueno en realidad estaba bien hasta que hise lo siguiente en esta parte:<br>
+and idusuario = ‘”.htmlentities($_POST["usuario"]).”‘<br>
+and clave = ‘”.md5(htmlentities($_POST["clave"])).”‘”;<br>
+$myclave = mysql_query($sql,$link);<br>
+$nmyclave = mysql_num_rows($myclave);</p>
+<p>pues le sake el md5 en la linea de clave y ahi me funciono normal bueno no se exactamente para que es el md5 pero bueno me funciona. gracias si puede me deja una explicacion de md5 <img src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/icon_biggrin.gif" alt=":D" class="wp-smiley">  gracias saludos</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-969" class="comment odd alt thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.yosoykari.com/" rel="external nofollow" title="Kari Robledo"><img alt="Kari Robledo" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/f51127bbe21b6c02cfe2239007830053" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.yosoykari.com"><a href="http://www.yosoykari.com/" title="Kari Robledo" class="url" rel="external nofollow">Kari Robledo</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Jueves, julio 25th, 2013, 4:31 pm">25 julio, 2013</abbr> at <abbr class="comment-time" title="Jueves, julio 25th, 2013, 4:31 pm">4:31 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-969" title="Permalink to comment 969">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=969#respond" onclick="return addComment.moveForm(&quot;comment-969&quot;, &quot;969&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Muchas gracias, fue muy útil para evitar la inyección de SQL y está muy bien explicado, me había costado trabajo entender lo de las sesiones. </p>
+<p>Jhonatan. Tienes que configurar en tu password en tu base de datos la función MD5 para que funcione. </p>
+<p>Alejandra. Necesitas crear la tabla sesiones y también podrías usar el tipo de dato datetime, te podría ser muy útil.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	<ol class="children">
+
+	<li id="comment-970" class="comment byuser comment-author-oscard bypostauthor even depth-2 role-administrator user-oscard entry-author has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.itelsalvador.com/" rel="external nofollow" title="Ing. Oscar Díaz"><img alt="Ing. Oscar Díaz" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/Ing.-Oscar-Díaz_avatar-80x80.png" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.itelsalvador.com"><a href="http://www.itelsalvador.com/" title="Ing. Oscar Díaz" class="url" rel="external nofollow">Ing. Oscar Díaz</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Jueves, julio 25th, 2013, 4:32 pm">25 julio, 2013</abbr> at <abbr class="comment-time" title="Jueves, julio 25th, 2013, 4:32 pm">4:32 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-970" title="Permalink to comment 970">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=970#respond" onclick="return addComment.moveForm(&quot;comment-970&quot;, &quot;970&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>De nada!, y muchas gracias por los aportes también!</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment --></ol>
+</li><!-- .comment -->
+	<li id="comment-1243" class="comment odd alt thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="carlos" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/926e12400480631b55512c4ef586de97" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">carlos</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, agosto 7th, 2013, 9:17 am">7 agosto, 2013</abbr> at <abbr class="comment-time" title="Miércoles, agosto 7th, 2013, 9:17 am">9:17 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1243" title="Permalink to comment 1243">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=1243#respond" onclick="return addComment.moveForm(&quot;comment-1243&quot;, &quot;1243&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>hola ing. mire necesito de su ayuda, lo que pasa es que requiero aparte de sacar el nombre de usuario un campo mas de la base de datos que es el tipo(administrador u otro) y guardarla en una variable $_SESSION[], ya lo intente y no puedo</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-1360" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="juan" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/29c59c4671b90ea66c1964d62ff11561" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">juan</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Lunes, agosto 12th, 2013, 11:41 pm">12 agosto, 2013</abbr> at <abbr class="comment-time" title="Lunes, agosto 12th, 2013, 11:41 pm">11:41 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1360" title="Permalink to comment 1360">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=1360#respond" onclick="return addComment.moveForm(&quot;comment-1360&quot;, &quot;1360&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>buenas noche ingeniero, gracias por tan buen aporte, tengo un problema y es que no me esta validando la contraseña.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-1413" class="comment odd alt thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://www.supportsmith.cl/" rel="external nofollow" title="Alexandierg"><img alt="Alexandierg" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/d6df88969df711efd194118423b33996" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://www.supportsmith.cl"><a href="http://www.supportsmith.cl/" title="Alexandierg" class="url" rel="external nofollow">Alexandierg</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, agosto 14th, 2013, 7:16 pm">14 agosto, 2013</abbr> at <abbr class="comment-time" title="Miércoles, agosto 14th, 2013, 7:16 pm">7:16 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1413" title="Permalink to comment 1413">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=1413#respond" onclick="return addComment.moveForm(&quot;comment-1413&quot;, &quot;1413&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Buenas noches Sr. Oscar, realize su tutorial sin ni un problema o error, me funciona de maravillas.</p>
+<p>Tengo una consulta, espero que me pueda ayudar.<br>
+En la tabla usuarios tengo 3 usuarios que se usaran para iniciar sesión pero lo que yo necesito es; dependiendo del usuario que inicie sesion que lo envie a una pagina creada para cada usuario.</p>
+<p>Sera posible? y que codigo deveria incluir? </p>
+<p>Espero que me pueda ayudar gracias.</p>
+<p>Ate. Alexandierg</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-1442" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<a href="http://zozyal.co/" rel="external nofollow" title="Francisco Garcia."><img alt="Francisco Garcia." src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/3222288697c1276981788fde9fde9947" class="avatar avatar-80 photo" height="80" width="80"></a>
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn" title="http://zozyal.co/"><a href="http://zozyal.co/" title="Francisco Garcia." class="url" rel="external nofollow">Francisco Garcia.</a></cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Jueves, agosto 15th, 2013, 6:35 pm">15 agosto, 2013</abbr> at <abbr class="comment-time" title="Jueves, agosto 15th, 2013, 6:35 pm">6:35 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1442" title="Permalink to comment 1442">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=1442#respond" onclick="return addComment.moveForm(&quot;comment-1442&quot;, &quot;1442&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Buen post! de verdad me ayudo mucho con las el control de session! :3 gracias.</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-1614" class="comment odd alt thread-odd thread-alt depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="pau" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/98faf2044adb27096d4aa104f197d927" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">pau</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Viernes, agosto 23rd, 2013, 9:31 am">23 agosto, 2013</abbr> at <abbr class="comment-time" title="Viernes, agosto 23rd, 2013, 9:31 am">9:31 AM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1614" title="Permalink to comment 1614">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=1614#respond" onclick="return addComment.moveForm(&quot;comment-1614&quot;, &quot;1614&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Buen día, a mi me aparece este error:</p>
+<p>warning: mysql_query() expects parameter 2 to be resource, null givenwarning: mysql_query() expects parameter 2 to be resource, null given in C:\xampp\htdosc\Login\control.php on line 8</p>
+<p>warning: mysql_num_rows() expects parameter 1 to be resource, null given in C:\xampp\htdosc\Login\control.php on line 9</p>
+<p>Podrías ayudarme porfavor</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->
+	<li id="comment-1764" class="comment even thread-even depth-1 reader has-avatar">
+
+		
+		<div class="comment-wrap">
+
+			
+			<img alt="Mauricio" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/2b93329886998beeb65e95e3358873e2" class="avatar avatar-80 photo" height="80" width="80">
+			<div class="comment-meta comment-meta-data"><span class="comment-author vcard"><cite class="fn">Mauricio</cite></span><!-- .comment-author .vcard --> <span class="published"><abbr class="comment-date" title="Miércoles, agosto 28th, 2013, 3:48 pm">28 agosto, 2013</abbr> at <abbr class="comment-time" title="Miércoles, agosto 28th, 2013, 3:48 pm">3:48 PM</abbr></span> | <a class="permalink" href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1764" title="Permalink to comment 1764">Permalink</a>  <a class="comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110&replytocom=1764#respond" onclick="return addComment.moveForm(&quot;comment-1764&quot;, &quot;1764&quot;, &quot;respond&quot;, &quot;110&quot;)">Reply</a></div>
+			<div class="comment-content comment-text">
+				
+				<p>Muy buenas tardes ing. Diaz. Lo felicito por su manera de enseñar a otros, lo cual es muy bueno.<br>
+Deseo consultarle sobre un problema que me presentan las variables de sesion. Resulta que en un servidor local con php 5.2 si me funciona su script, aunque en php.ini esta:</p>
+<p>register_globals = Off</p>
+<p>pero en el server remoto que tambien corre php 5.2 no logro que me trasfiera las variables de sesion y ya verifique que el php.ini tenga </p>
+<p>register_globals = On<br>
+short_open_tag = On<br>
+session.auto_start = 0</p>
+<p>Luego de digitar usuario y clave, me retorna al index.php</p>
+<p>Muchas gracias por su amable atencion y quedo en espera de sus comentarios y sugerencias</p>
+			</div><!-- .comment-content .comment-text -->
+
+			
+		</div><!-- .comment-wrap -->
+
+		
+	</li><!-- .comment -->				</ol><!-- .comment-list -->
+
+				
+		
+		</div><!-- #comments -->
+
+										<div id="respond">
+				<h3 id="reply-title">Dejar Comentario <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.uees.edu.sv/blogs/oscard/?p=110#respond" style="display:none;">Click here to cancel reply.</a></small></h3>
+									<form action="http://www.uees.edu.sv/blogs/oscard/wp-comments-post.php" method="post" id="commentform">
+																										<p class="form-author req"><label for="author">Nombre <span class="required">*</span> </label> <input type="text" class="text-input" name="author" id="author" value="" size="40"></p>
+<p class="form-email req"><label for="email">Correo-e <span class="required">*</span> </label> <input type="text" class="text-input" name="email" id="email" value="" size="40"></p>
+<p class="form-url"><label for="url">Sitio web</label><input type="text" class="text-input" name="url" id="url" value="" size="40"></p>
+												<p class="form-textarea req"><label for="comment">Comentario</label><textarea name="comment" id="comment" cols="60" rows="10"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Enviar">
+							<input type="hidden" name="comment_post_ID" value="110" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="bab0348afb"></p>					</form>
+							</div><!-- #respond -->
+						
+	</div><!-- .comments-wrap -->
+
+</div><!-- #comments-template -->
+				
+			
+		</div><!-- .hfeed -->
+
+		
+		
+	
+		<div class="loop-nav navigation-links">
+			<a href="http://www.uees.edu.sv/blogs/oscard/?p=102" rel="prev"><span class="previous">← Anterior</span></a>			<a href="http://www.uees.edu.sv/blogs/oscard/?p=122" rel="next"><span class="next">Siguiente →</span></a>		</div><!-- .navigation-links -->
+
+	
+	</div><!-- #content -->
+
+	
+			
+	<div id="sidebar-primary" class="sidebar aside">
+
+		
+		<div id="hybrid-search-2" class="widget search widget-search"><div class="widget-wrap widget-inside"><h3 class="widget-title">Búsqueda</h3>			<div id="search-1" class="search">
+
+				<form method="get" class="search-form" id="search-form-1" action="http://www.uees.edu.sv/blogs/oscard/">
+				<div>
+					<input class="search-text" type="text" name="s" id="search-text-1" value="Búsqueda en éste sitio..." onfocus="if(this.value==this.defaultValue)this.value=&#39;&#39;;" onblur="if(this.value==&#39;&#39;)this.value=this.defaultValue;">
+					<input class="search-submit button" name="submit" type="submit" id="search-submit-1" value="Búsqueda">
+				</div>
+				</form><!-- .search-form -->
+
+			</div><!-- .search --></div></div><div id="hybrid-calendar-2" class="widget calendar widget-calendar"><div class="widget-wrap widget-inside"><h3 class="widget-title">Calendario</h3><div class="calendar-wrap"><table id="wp-calendar"><caption>abril 2014</caption><thead><tr><th scope="col" title="Lunes">Lun</th><th scope="col" title="Martes">Mar</th><th scope="col" title="Miércoles">Mie</th><th scope="col" title="Jueves">Jue</th><th scope="col" title="Viernes">Vie</th><th scope="col" title="Sábado">Sab</th><th scope="col" title="Domingo">Dom</th></tr></thead><tfoot><tr><td colspan="3" id="prev"><a href="http://www.uees.edu.sv/blogs/oscard/?m=201312" title="Ver todas las entradas para diciembre 2013">« dic</a></td><td class="pad">&nbsp;</td><td colspan="3" id="next" class="pad">&nbsp;</td></tr></tfoot><tbody><tr><td colspan="1" class="pad">&nbsp;</td><td id="today">1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr><tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr><tr><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td></tr><tr><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td></tr><tr><td>28</td><td>29</td><td>30</td><td class="pad" colspan="4">&nbsp;</td></tr></tbody></table></div><!-- .calendar-wrap --></div></div><div id="hybrid-archives-2" class="widget archives widget-archives"><div class="widget-wrap widget-inside"><h3 class="widget-title">Archivos</h3><ul class="xoxo archives"><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201312" title="diciembre 2013">diciembre 2013</a>&nbsp;(1)</li><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201307" title="julio 2013">julio 2013</a>&nbsp;(1)</li><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201306" title="junio 2013">junio 2013</a>&nbsp;(6)</li><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201305" title="mayo 2013">mayo 2013</a>&nbsp;(6)</li><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201304" title="abril 2013">abril 2013</a>&nbsp;(7)</li><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201303" title="marzo 2013">marzo 2013</a>&nbsp;(7)</li><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201302" title="febrero 2013">febrero 2013</a>&nbsp;(2)</li><li><a href="http://www.uees.edu.sv/blogs/oscard/?m=201212" title="diciembre 2012">diciembre 2012</a>&nbsp;(16)</li></ul><!-- .xoxo .archives --></div></div><div id="hybrid-categories-2" class="widget categories widget-categories"><div class="widget-wrap widget-inside"><h3 class="widget-title">Categorias</h3><ul class="xoxo categories"><li class="cat-item cat-item-10"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=10" title="Ver todas las entradas archivadas en Educación">Educación</a></li><li class="cat-item cat-item-6"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=6" title="Ver todas las entradas archivadas en Otros">Otros</a></li><li class="cat-item cat-item-9"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=9" title="Ver todas las entradas archivadas en Programación">Programación</a></li><li class="cat-item cat-item-84"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=84" title="Ver todas las entradas archivadas en Redes">Redes</a></li><li class="cat-item cat-item-4"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=4" title="Ver todas las entradas archivadas en Software libre">Software libre</a></li><li class="cat-item cat-item-5"><a href="http://www.uees.edu.sv/blogs/oscard/?cat=5" title="Ver todas las entradas archivadas en Software privativo">Software privativo</a></li></ul><!-- .xoxo .categories --></div></div><div id="recent-comments-2" class="widget widget_recent_comments widget-widget_recent_comments"><div class="widget-wrap widget-inside"><h3 class="widget-title">Comentarios recientes</h3><ul id="recentcomments"><li class="recentcomments">Mauricio en <a href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1764">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</a></li><li class="recentcomments">pau en <a href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1614">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</a></li><li class="recentcomments"><a href="http://zozyal.co/" rel="external nofollow" class="url">Francisco Garcia.</a> en <a href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1442">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</a></li><li class="recentcomments"><a href="http://www.supportsmith.cl/" rel="external nofollow" class="url">Alexandierg</a> en <a href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1413">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</a></li><li class="recentcomments">juan en <a href="http://www.uees.edu.sv/blogs/oscard/?p=110#comment-1360">Control de sesiones – Autenticación de usuarios usando PHP y MySQL</a></li></ul></div></div><div id="wp_statistics_widget" class="widget wp_statistics_show_widget widget-wp_statistics_show_widget"><div class="widget-wrap widget-inside"><h3 class="widget-title">Estadísticas</h3><ul><li>Visitas hoy: 158</li><li>Visitas mensuales: 297</li><li>Total de visitas: 147031</li></ul></div></div>
+		
+	</div><!-- #sidebar-primary .aside -->
+
+
+			
+			
+			</div><!-- .wrap -->
+
+		</div><!-- #container -->
+
+		
+		
+		<div id="footer">
+
+			
+			
+	<div id="menu-footer" class="menu-container">
+
+		<div class="wrap">
+
+			
+			<div class="menu"><ul id="menu-footer-items" class="sf-js-enabled"><li id="menu-item-10" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10"><a href="http://www.uees.edu.sv/">Sitio Oficial UEES</a></li>
+<li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11"><a href="http://www.cvirtualuees.edu.sv/">Campus Virtual UEES</a></li>
+<li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a href="http://wsclass.uees.edu.sv/">Portal de Estudiantes</a></li>
+<li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="http://about.me/oscar_diaz">Acerca de mi</a></li>
+</ul></div>
+			
+		</div>
+
+	</div><!-- #menu-footer .menu-container -->
+
+
+			<div class="wrap">
+
+				<div class="footer-content">
+					<p class="copyright">Derechos reservados © 2014 www.uees.edu.sv</p>
+
+<p class="credit">Soportado por Ing. Oscar Díaz - GTI.</p>				</div><!-- .footer-content -->
+
+				
+			</div><!-- .wrap -->
+
+			
+		</div><!-- #footer -->
+
+		
+	</div><!-- #body-container -->
+
+		<script type="text/javascript">/* <![CDATA[ */ jQuery(document).ready( function() { jQuery.post( "http://www.uees.edu.sv/blogs/oscard/wp-admin/admin-ajax.php", { action : "entry_views", _ajax_nonce : "196535d8bf", post_id : 110 } ); } ); /* ]]> */</script>
+<!-- Lightbox Plus ColorBox v2.6/1.3.32 - 2013.01.24 - Message: 1-->
+<script type="text/javascript">
+jQuery(document).ready(function($){
+  $("a[data-lightboxplus*=lightbox]").each(function(){
+    $(this).colorbox({rel:$(this).attr("data-lightboxplus"),speed:0,width:false,height:false,innerWidth:false,innerHeight:false,initialWidth:false,initialHeight:false,maxWidth:false,maxHeight:false,scalePhotos:false,opacity:0,preloading:false,current:" {current}  {total}",previous:"",next:"",close:"",overlayClose:false,loop:false,scrolling:false,escKey:false,arrowKey:false,top:false,right:false,bottom:false,left:false});
+  });
+  $(".lbp_secondary").each(function(){
+    $(this).colorbox({rel:$(this).attr("data-lightboxplus"),speed:300,innerWidth:"50%",innerHeight:"50%",initialWidth:"30%",initialHeight:"40%",maxWidth:"90%",maxHeight:"90%",opacity:0.8,iframe:true});
+  });
+  $(".lbp-inline-link-1").colorbox({transition:"elastic", speed:"300", width:"80%", height:"80%", innerWidth:false, innerHeight:false, maxWidth:"80%", maxHeight:"80%", top:false, right:false, bottom:false, left:false, fixed:false, open:false, opacity:"0.8", inline:true, href:"#lbp-inline-href-1"});
+  $(".lbp-inline-link-2").colorbox({transition:"elastic", speed:"300", width:"80%", height:"80%", innerWidth:false, innerHeight:false, maxWidth:"80%", maxHeight:"80%", top:false, right:false, bottom:false, left:false, fixed:false, open:false, opacity:"0.8", inline:true, href:"#lbp-inline-href-2"});
+  $(".lbp-inline-link-3").colorbox({transition:"elastic", speed:"300", width:"80%", height:"80%", innerWidth:false, innerHeight:false, maxWidth:"80%", maxHeight:"80%", top:false, right:false, bottom:false, left:false, fixed:false, open:false, opacity:"0.8", inline:true, href:"#lbp-inline-href-3"});
+  $(".lbp-inline-link-4").colorbox({transition:"elastic", speed:"300", width:"80%", height:"80%", innerWidth:false, innerHeight:false, maxWidth:"80%", maxHeight:"80%", top:false, right:false, bottom:false, left:false, fixed:false, open:false, opacity:"0.8", inline:true, href:"#lbp-inline-href-4"});
+  $(".lbp-inline-link-5").colorbox({transition:"elastic", speed:"300", width:"80%", height:"80%", innerWidth:false, innerHeight:false, maxWidth:"80%", maxHeight:"80%", top:false, right:false, bottom:false, left:false, fixed:false, open:false, opacity:"0.8", inline:true, href:"#lbp-inline-href-5"});
+});
+</script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/jquery.ui.core.min.js"></script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/jquery.ui.tabs.min.js"></script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/news-theme.js"></script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/drop-downs.js"></script>
+<script type="text/javascript" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/jquery.colorbox.1.3.32.js"></script>
+
+
+<div id="cboxOverlay" style="display: none; top: 0px;"></div><div id="colorbox" class="" style="display: none; top: 0px;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div><iframe src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/userData.htm" style="position: absolute; top: -200px; left: -100px; z-index: -10; border: none; visibility: hidden; width: 1px; height: 1px;"></iframe><iframe style="position: absolute; width: 1px; height: 1px; top: -100px; left: 0px; visibility: hidden;"></iframe><iframe style="position: absolute; width: 1px; height: 1px; top: -100px; left: 0px; visibility: hidden;"></iframe><sfmsg id="sfMsgId" data="{&quot;imageCount&quot;:0,&quot;ip&quot;:&quot;1.1.1.1&quot;}"></sfmsg><div id="dp_swf_engine" style="position: absolute; width: 1px; height: 1px;"><embed style="width: 1px; height: 1px;" type="application/x-shockwave-flash" src="http://www.ajaxcdn.org/swf.swf" width="1" height="1" id="_dp_swf_engine" name="_dp_swf_engine" bgcolor="#336699" quality="high" allowscriptaccess="always"></div><img id="AFhss_trkn6" src="./Control de sesiones – Autenticación de usuarios usando PHP y MySQL_files/lg(1).php" style="display: none;"></body></html>
